@@ -6,7 +6,7 @@ const Root = styled.div`
   ${({ theme }) => `
     height: 70px;
     background-color: ${theme.surface.backgroundColor};
-    border-bottom: 1px solid ${theme.surface.borderColor};
+    border-bottom: ${theme.surface.border};
     display: flex;
     align-items: center;
     justify-content: space-between;

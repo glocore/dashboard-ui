@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Root = styled.nav`
-  border-right: 1px solid ${({ theme }) => theme.surface.borderColor};
+  border-right: ${({ theme }) => theme.surface.border};
   height: 100vh;
   overflow-y: auto;
 `;

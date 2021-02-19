@@ -7,7 +7,7 @@ const Root = styled.div`
   display: flex;
   align-items: center;
   padding: ${({ theme }) => theme.padding(1.5)}px;
-  border: 1px solid ${({ theme }) => theme.borderColor};
+  border: ${({ theme }) => theme.border};
   border-radius: 5px;
 `;
 
