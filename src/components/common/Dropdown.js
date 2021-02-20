@@ -3,12 +3,15 @@ import PropTypes from "prop-types";
 import { Dropdown as DropdownIcon } from "../../icons";
 
 const Root = styled.div`
-  position: relative;
-  display: flex;
-  align-items: center;
-  padding: ${({ theme }) => theme.padding(1.5)}px;
-  border: ${({ theme }) => theme.border};
-  border-radius: 5px;
+  ${({ theme }) => `
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: ${theme.padding(1.2)}px ${theme.padding(1.5)}px;
+    border: ${theme.border};
+    border-radius: 5px;
+
+  `}
 `;
 
 const Select = styled.select`

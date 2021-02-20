@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Card } from "./common/Card";
+import { DailyVisitorsChart } from "./main/DailyVisitorsChart";
 import { Header } from "./main/Header";
 
 const Root = styled.div`
@@ -16,7 +17,7 @@ const Main = () => {
     <Root>
       <Header />
       <Grid>
-        <Card></Card>
+        <DailyVisitorsChart />
       </Grid>
     </Root>
   );
