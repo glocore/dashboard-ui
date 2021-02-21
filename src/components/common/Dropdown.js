@@ -10,7 +10,7 @@ const Root = styled.div`
     padding: ${theme.padding(1.2)}px ${theme.padding(1.5)}px;
     border: ${theme.border};
     border-radius: 5px;
-
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
   `}
 `;
 

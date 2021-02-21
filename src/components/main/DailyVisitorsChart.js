@@ -11,6 +11,7 @@ import {
 import styled from "styled-components";
 import { Card, CardContent } from "../common/Card";
 import { Dropdown } from "../common/Dropdown";
+import { Spacer } from "../common/Spacer";
 import { customTooltip } from "./dailyVisitorChart/Tooltip";
 
 const getRandomInt = (min, max) => {
@@ -63,11 +64,6 @@ const HeaderTitle = styled.span`
 
 const HeaderControlsWrapper = styled.div`
   display: flex;
-`;
-
-const Spacer = styled.div`
-  margin-right: ${({ theme, h }) => theme.padding(h)}px;
-  margin-bottom: ${({ theme, v }) => theme.padding(v)}px;
 `;
 
 const ChartWrapper = styled.div`
@@ -138,7 +134,6 @@ const DailyVisitorsChart = () => {
     >
       <CardContent>
         <ChartWrapper>
-          <Spacer v={2} />
           <ResponsiveContainer>
             <BarChart data={data} margin={{ left: 0, right: -40 }}>
               <CartesianGrid
