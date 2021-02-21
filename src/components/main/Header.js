@@ -4,14 +4,19 @@ import { Dropdown } from "../common/Dropdown";
 
 const Root = styled.div`
   ${({ theme }) => `
-    height: 70px;
     background-color: ${theme.surface.backgroundColor};
     border-bottom: ${theme.surface.border};
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 ${theme.padding(4)}px;
-  `}
+    `}
+`;
+
+const HeaderContent = styled.div`
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 ${({ theme }) => theme.padding(4)}px;
+  margin: 0 auto;
+  max-width: 1280px;
 `;
 
 const Title = styled.span`
@@ -28,15 +33,17 @@ const Header = () => {
 
   return (
     <Root>
-      <Title>Dashboard</Title>
-      <Dropdown
-        options={[
-          { label: "🇬🇧 EN", value: "en" },
-          { label: "🇪🇸 ES", value: "es" },
-        ]}
-        current={currentLanguage}
-        onChange={onLanguageChange}
-      />
+      <HeaderContent>
+        <Title>Dashboard</Title>
+        <Dropdown
+          options={[
+            { label: "🇬🇧 EN", value: "en" },
+            { label: "🇪🇸 ES", value: "es" },
+          ]}
+          current={currentLanguage}
+          onChange={onLanguageChange}
+        />
+      </HeaderContent>
     </Root>
   );
 };

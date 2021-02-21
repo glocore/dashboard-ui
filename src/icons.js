@@ -31,7 +31,7 @@ export const MetricDown = (props) => (
         transform="translate(1295 503)"
         fill="#fff"
         stroke="currentColor"
-        stroke-width="4"
+        strokeWidth="4"
       >
         <rect width="45" height="45" stroke="none" />
         <rect x="2" y="2" width="41" height="41" fill="none" />
@@ -58,7 +58,7 @@ export const MetricUp = (props) => (
         transform="translate(1295 503)"
         fill="#fff"
         stroke="currentColor"
-        stroke-width="4"
+        strokeWidth="4"
       >
         <rect width="45" height="45" stroke="none" />
         <rect x="2" y="2" width="41" height="41" fill="none" />
@@ -68,5 +68,22 @@ export const MetricUp = (props) => (
         <path d="M24.136,6.15,21.005,3.288,7.3,16.83V9.365h-4V24.448l14.965-1.191-.416-3.919-7.721.633Z" />
       </g>
     </g>
+  </svg>
+);
+
+export const ExternalLink = (props) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    {...props}
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+    />
   </svg>
 );

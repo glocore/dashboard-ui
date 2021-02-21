@@ -4,6 +4,7 @@ import { Spacer } from "./common/Spacer";
 import { DailyVisitorsChart } from "./main/DailyVisitorsChart";
 import { Header } from "./main/Header";
 import { MetricSummary } from "./main/MetricSummary";
+import { VisitorsTable } from "./main/VisitorsTable";
 
 const getRandomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -28,11 +29,19 @@ const Root = styled.div`
 
 const MainWrapper = styled.div`
   padding: ${({ theme }) => theme.padding(4)}px;
+  max-width: 1280px;
+  margin: 0 auto;
 `;
 
 const MetricSummaryGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  grid-gap: ${({ theme }) => theme.padding(4)}px;
+`;
+
+const TablesGrid = styled.div`
+  display: grid;
+  grid-template-columns: 2fr 1fr;
   grid-gap: ${({ theme }) => theme.padding(4)}px;
 `;
 
@@ -78,6 +87,11 @@ const Main = () => {
             chartColors={{ stroke: "#F9CF56", fill: "#FEFAEE" }}
           />
         </MetricSummaryGrid>
+        <Spacer v={4} />
+        <TablesGrid>
+          <VisitorsTable />
+          {/* <VisitorsTable /> */}
+        </TablesGrid>
       </MainWrapper>
     </Root>
   );
