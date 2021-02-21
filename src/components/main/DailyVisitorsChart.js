@@ -1,3 +1,4 @@
+// TODO: extract sample data source to separate file; add timeout to emulate remote request
 import React from "react";
 import {
   BarChart,

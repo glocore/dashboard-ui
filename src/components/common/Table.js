@@ -1,3 +1,4 @@
+// TODO: Make table rows scollable
 import styled from "styled-components";
 
 const StyledTable = styled.table`
@@ -6,13 +7,16 @@ const StyledTable = styled.table`
 `;
 
 const TableWrapper = styled.div`
+  width: 100%;
   max-height: 400px;
   overflow-y: auto;
 `;
 
 const Table = ({ children, ...props }) => (
   <TableWrapper>
-    <StyledTable {...props}>{children}</StyledTable>
+    <StyledTable {...props} cellPadding={0} cellSpacing={0}>
+      {children}
+    </StyledTable>
   </TableWrapper>
 );
 

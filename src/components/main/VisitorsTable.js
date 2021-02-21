@@ -1,6 +1,5 @@
 import React from "react";
 import { Area, AreaChart, ResponsiveContainer } from "recharts";
-import styled from "styled-components";
 import { ExternalLink as ExternalLinkIcon } from "../../icons";
 import { Card, HeaderText } from "../common/Card";
 import { Table, Td, Th, Tr } from "../common/Table";
@@ -27,10 +26,7 @@ const generateSampleData = () => {
     "/store/symbols-styleguides",
     "/store/dashboard-ui-kit",
     "/store/webflow-cards",
-    "/store/",
     "/store/symbols-styleguides",
-    "/store/dashboard-ui-kit",
-    "/store/webflow-cards",
   ];
   const result = [];
   routes.forEach((route) => {
@@ -57,7 +53,7 @@ const VisitorsTable = () => {
   const [tableData] = React.useState(generateSampleData());
   return (
     <Card Header={() => <HeaderText>Most Visited Pages</HeaderText>}>
-      <Table cellspacing="0" cellpadding="0">
+      <Table>
         <thead>
           <Tr>
             <Th>Page Name</Th>

@@ -1,3 +1,4 @@
+// TODO: Make header fixed while scrolling
 import React from "react";
 import styled from "styled-components";
 import { Spacer } from "./common/Spacer";

@@ -7,6 +7,15 @@ const theme = {
     border: "1px solid #e9ecf3",
     backgroundColor: "white",
   },
+  clickable: `
+    cursor: pointer;
+    &:hover {
+      background-color: #eeeeee;
+    }
+    &:active {
+      background-color: #dddddd;
+    }
+  `,
 };
 
 export default theme;
