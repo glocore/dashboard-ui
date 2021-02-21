@@ -9,7 +9,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import styled from "styled-components";
-import { Card, CardContent } from "../common/Card";
+import { Card, CardContent, HeaderText } from "../common/Card";
 import { Dropdown } from "../common/Dropdown";
 import { Spacer } from "../common/Spacer";
 import { customTooltip } from "./dailyVisitorChart/Tooltip";
@@ -55,11 +55,6 @@ const HeaderWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-`;
-
-const HeaderTitle = styled.span`
-  font-size: 1.2rem;
-  font-weight: 500;
 `;
 
 const HeaderControlsWrapper = styled.div`
@@ -112,7 +107,7 @@ const DailyVisitorsChart = () => {
     <Card
       Header={() => (
         <HeaderWrapper>
-          <HeaderTitle>Daily Visitors</HeaderTitle>
+          <HeaderText>Daily Visitors</HeaderText>
           <HeaderControlsWrapper>
             <Dropdown
               options={months.map((month) => ({

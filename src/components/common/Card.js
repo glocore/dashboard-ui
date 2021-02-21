@@ -13,6 +13,14 @@ const HeaderWrapper = styled.div`
     border-bottom: ${theme.surface.border};
   `}
 `;
+
+const HeaderText = styled.span`
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: ${({ theme }) => theme.padding(1)}px 0;
+`;
+
 const CardContent = styled.div`
   padding: ${({ theme }) => theme.padding(4)}px;
 `;
@@ -30,4 +38,4 @@ const Card = ({ children, Header }) => {
   );
 };
 
-export { Card, CardContent };
+export { Card, CardContent, HeaderText };

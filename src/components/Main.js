@@ -4,6 +4,7 @@ import { Spacer } from "./common/Spacer";
 import { DailyVisitorsChart } from "./main/DailyVisitorsChart";
 import { Header } from "./main/Header";
 import { MetricSummary } from "./main/MetricSummary";
+import { SocialTrafficTable } from "./main/SocialTrafficTable";
 import { VisitorsTable } from "./main/VisitorsTable";
 
 const getRandomInt = (min, max) => {
@@ -90,7 +91,7 @@ const Main = () => {
         <Spacer v={4} />
         <TablesGrid>
           <VisitorsTable />
-          {/* <VisitorsTable /> */}
+          <SocialTrafficTable />
         </TablesGrid>
       </MainWrapper>
     </Root>

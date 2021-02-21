@@ -2,7 +2,8 @@ import React from "react";
 import { Area, AreaChart, ResponsiveContainer } from "recharts";
 import styled from "styled-components";
 import { ExternalLink as ExternalLinkIcon } from "../../icons";
-import { Card } from "../common/Card";
+import { Card, HeaderText } from "../common/Card";
+import { Table, Td, Th, Tr } from "../common/Table";
 
 const getRandomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -26,6 +27,10 @@ const generateSampleData = () => {
     "/store/symbols-styleguides",
     "/store/dashboard-ui-kit",
     "/store/webflow-cards",
+    "/store/",
+    "/store/symbols-styleguides",
+    "/store/dashboard-ui-kit",
+    "/store/webflow-cards",
   ];
   const result = [];
   routes.forEach((route) => {
@@ -40,59 +45,6 @@ const generateSampleData = () => {
 
   return result;
 };
-
-const HeaderText = styled.span`
-  display: block;
-  font-size: 1.2rem;
-  font-weight: 500;
-  margin: ${({ theme }) => theme.padding(1)}px 0;
-`;
-
-const Table = styled.table`
-  width: 100%;
-  border-collapse: collapse;
-`;
-
-const Tr = styled.tr`
-  border-bottom: ${({ theme }) => theme.surface.border};
-  cursor: pointer;
-
-  tbody &:hover {
-    background-color: #eeeeee;
-  }
-
-  tbody &:active {
-    background-color: #dddddd;
-  }
-`;
-
-const Td = styled.td`
-  text-align: left;
-  padding: ${({ theme }) => `${theme.padding(3)}px ${theme.padding(2)}px`};
-
-  &:first-child {
-    padding-left: ${({ theme }) => theme.padding(4)}px;
-  }
-  &:last-child {
-    padding-right: ${({ theme }) => theme.padding(4)}px;
-  }
-`;
-
-const Th = styled.th`
-  text-align: left;
-  text-transform: uppercase;
-  color: #999;
-  font-size: 0.75rem;
-  font-weight: 500;
-  padding: ${({ theme }) => `${theme.padding(2)}px ${theme.padding(2)}px`};
-
-  &:first-child {
-    padding-left: ${({ theme }) => theme.padding(4)}px;
-  }
-  &:last-child {
-    padding-right: ${({ theme }) => theme.padding(4)}px;
-  }
-`;
 
 const externalLinkIconStyle = {
   width: 20,
