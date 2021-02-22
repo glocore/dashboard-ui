@@ -9,7 +9,7 @@ const StyledTable = styled.table`
 const TableWrapper = styled.div`
   width: 100%;
   max-height: 400px;
-  overflow-y: auto;
+  overflow: auto;
 `;
 
 const Table = ({ children, ...props }) => (

@@ -5,6 +5,7 @@ const Root = styled.div`
   border: ${({ theme }) => theme.surface.border};
   border-radius: 3px;
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  width: 100%;
 `;
 
 const HeaderWrapper = styled.div`

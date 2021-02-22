@@ -31,6 +31,17 @@ const scaleAnimation = (width) => keyframes`
   }
 `;
 
+const ProgressTrack = styled.div`
+  width: 100%;
+  min-width: 90px;
+  height: 4px;
+  background-color: #dddddd;
+  border-radius: 4px;
+  @media (min-width: 1500px) {
+    min-width: 100px;
+  }
+`;
+
 const Progress = styled.div`
   height: 4px;
   width: ${({ percent }) => percent}%;
@@ -44,16 +55,9 @@ const Progress = styled.div`
 
 const PercentBar = ({ percent }) => {
   return (
-    <div
-      style={{
-        width: "100%",
-        height: 4,
-        backgroundColor: "#dddddd",
-        borderRadius: 4,
-      }}
-    >
+    <ProgressTrack>
       <Progress percent={percent} />
-    </div>
+    </ProgressTrack>
   );
 };
 
@@ -65,16 +69,18 @@ const SocialTrafficTable = () => {
         <thead>
           <Tr>
             <Th>Network</Th>
-            <Th>Visitors</Th>
-            <Th style={{ minWidth: 100 }}>{""}</Th>
+            <Th style={{ paddingRight: 0 }}>Visitors</Th>
+            <Th style={{ paddingLeft: 0 }}>{""}</Th>
           </Tr>
         </thead>
         <tbody>
           {tableData.map((row, index) => (
             <Tr key={index}>
               <Td>{row.network}</Td>
-              <Td>{row.visitors.toLocaleString()}</Td>
-              <Td>
+              <Td style={{ paddingRight: 0 }}>
+                {row.visitors.toLocaleString()}
+              </Td>
+              <Td style={{ paddingLeft: 0 }}>
                 <PercentBar percent={row.percentVisitors} />
               </Td>
             </Tr>

@@ -5,6 +5,7 @@ import {
   MetricDown as MetricDownIcon,
   MetricUp as MetricUpIcon,
 } from "../../icons";
+import { Paper } from "@material-ui/core";
 
 const Title = styled.span`
   display: block;
@@ -42,7 +43,7 @@ const metricChangeIconStyles = {
 
 const MetricSummary = ({ title, metric, change, chartData, chartColors }) => {
   return (
-    <Card>
+    <Paper elevation={1}>
       <CardContent>
         <Title>{title}</Title>
         <Metric>{metric}</Metric>
@@ -69,7 +70,7 @@ const MetricSummary = ({ title, metric, change, chartData, chartColors }) => {
           </ResponsiveContainer>
         </div>
       </CardContent>
-    </Card>
+    </Paper>
   );
 };
 

@@ -31,7 +31,7 @@ const DrawerToggle = styled.button`
 
 const HeaderContent = styled.div`
   height: 70px;
-  width: 100%;
+  width: calc(100% - ${({ theme }) => theme.padding(8)}px);
   display: flex;
   align-items: center;
   justify-content: space-between;

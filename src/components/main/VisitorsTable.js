@@ -1,8 +1,25 @@
+import {
+  // Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+} from "@material-ui/core";
 import React from "react";
 import { Area, AreaChart, ResponsiveContainer } from "recharts";
 import { ExternalLink as ExternalLinkIcon } from "../../icons";
 import { Card, HeaderText } from "../common/Card";
 import { Table, Td, Th, Tr } from "../common/Table";
+
+const columns = [
+  { label: "Page Name" },
+  { label: "" },
+  { label: "Visitors" },
+  { label: "Unique Page Visits" },
+  { label: "Bounce Rate" },
+  { label: "", minWidth: 100 },
+];
 
 const getRandomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -53,15 +70,58 @@ const VisitorsTable = () => {
   const [tableData] = React.useState(generateSampleData());
   return (
     <Card Header={() => <HeaderText>Most Visited Pages</HeaderText>}>
+      {/* <TableContainer style={{ maxHeight: 400, width: "100%" }}>
+        <Table stickyHeader>
+          <TableHead>
+            <TableRow>
+              {columns.map((column, index) => (
+                <TableCell key={index} style={{ minWidth: column.minWidth }}>
+                  {column.label}
+                </TableCell>
+              ))}
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {tableData.map((row, index) => (
+              <TableRow hover key={index}>
+                <TableCell>{row.route}</TableCell>
+                <TableCell>
+                  {<ExternalLinkIcon style={externalLinkIconStyle} />}
+                </TableCell>
+                <TableCell>{row.visitors.toLocaleString()}</TableCell>
+                <TableCell>{row.uniquePageVisits.toLocaleString()}</TableCell>
+                <TableCell>{row.bounceRate}%</TableCell>
+                <TableCell>
+                  {
+                    <div style={{ width: "100%", height: 50 }}>
+                      <ResponsiveContainer>
+                        <AreaChart data={row.chartData} margin={false}>
+                          <Area
+                            type="linear"
+                            dataKey="data"
+                            stroke="#1565D8"
+                            strokeWidth={3}
+                            fill="#E7EFFA"
+                          />
+                        </AreaChart>
+                      </ResponsiveContainer>
+                    </div>
+                  }
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer> */}
       <Table>
         <thead>
           <Tr>
             <Th>Page Name</Th>
             <Th>{""}</Th>
             <Th>Visitors</Th>
-            <Th style={{ minWidth: 130 }}>Unique Page Visits</Th>
-            <Th style={{ minWidth: 90 }}>Bounce Rate</Th>
-            <Th style={{ minWidth: 130 }}>{""}</Th>
+            <Th>Unique Page Visits</Th>
+            <Th style={{ paddingRight: 0 }}>Bounce Rate</Th>
+            <Th style={{ minWidth: 80, paddingLeft: 0 }}>{""}</Th>
           </Tr>
         </thead>
         <tbody>
@@ -71,8 +131,8 @@ const VisitorsTable = () => {
               <Td>{<ExternalLinkIcon style={externalLinkIconStyle} />}</Td>
               <Td>{row.visitors.toLocaleString()}</Td>
               <Td>{row.uniquePageVisits.toLocaleString()}</Td>
-              <Td>{row.bounceRate}%</Td>
-              <Td>
+              <Td style={{ paddingRight: 0 }}>{row.bounceRate}%</Td>
+              <Td style={{ paddingLeft: 0 }}>
                 {
                   <div style={{ width: "100%", height: 50 }}>
                     <ResponsiveContainer>
