@@ -1,21 +1,41 @@
-import styled, { ThemeProvider } from "styled-components";
+import React from "react";
+import { ThemeProvider } from "styled-components";
+import { Drawer, Hidden } from "@material-ui/core";
 import theme from "./theme";
 import { NavPane } from "./components/NavPane";
+import { Header } from "./components/Header";
 import { Main } from "./components/Main";
 
-const Root = styled.div`
-  display: grid;
-  grid-template-columns: 250px auto;
-  min-height: 100vh;
-`;
+const container = window !== undefined ? () => window.document.body : undefined;
 
 function App() {
+  const [drawerOpen, setDrawerOpen] = React.useState(false);
+
+  const toggleDrawer = () => {
+    setDrawerOpen(!drawerOpen);
+  };
+
   return (
     <ThemeProvider theme={theme}>
-      <Root>
-        <NavPane></NavPane>
-        <Main></Main>
-      </Root>
+      <div style={{ display: "flex" }}>
+        <Hidden lgUp>
+          <Drawer
+            variant="temporary"
+            container={container}
+            open={drawerOpen}
+            onClose={toggleDrawer}
+          >
+            <NavPane />
+          </Drawer>
+        </Hidden>
+        <Hidden mdDown>
+          <Drawer variant="permanent">
+            <NavPane />
+          </Drawer>
+        </Hidden>
+        <Header onDrawerToggleClick={toggleDrawer} />
+        <Main />
+      </div>
     </ThemeProvider>
   );
 }

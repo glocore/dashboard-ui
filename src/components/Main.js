@@ -1,13 +1,14 @@
+// TODO: Make layout responsive
 // TODO: Make header fixed while scrolling
 // TODO: Add proptypes everywhere
 import React from "react";
 import styled from "styled-components";
 import { Spacer } from "./common/Spacer";
 import { DailyVisitorsChart } from "./main/DailyVisitorsChart";
-import { Header } from "./main/Header";
 import { MetricSummary } from "./main/MetricSummary";
 import { SocialTrafficTable } from "./main/SocialTrafficTable";
 import { VisitorsTable } from "./main/VisitorsTable";
+import { navPaneWidth } from "./NavPane";
 
 const getRandomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -25,9 +26,13 @@ const generateSampleChartData = () => {
   return result;
 };
 
-const Root = styled.div`
+const Root = styled.main`
   background-color: #fbfbfd;
-  min-height: 100vh;
+  width: 100%;
+  padding-top: 70px;
+  @media (min-width: 1280px) {
+    padding-left: ${navPaneWidth}px;
+  }
 `;
 
 const MainWrapper = styled.div`
@@ -56,7 +61,6 @@ const Main = () => {
 
   return (
     <Root>
-      <Header />
       <MainWrapper>
         <DailyVisitorsChart />
         <Spacer v={4} />

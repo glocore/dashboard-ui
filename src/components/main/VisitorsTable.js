@@ -65,8 +65,8 @@ const VisitorsTable = () => {
           </Tr>
         </thead>
         <tbody>
-          {tableData.map((row) => (
-            <Tr>
+          {tableData.map((row, index) => (
+            <Tr key={index}>
               <Td>{row.route}</Td>
               <Td>{<ExternalLinkIcon style={externalLinkIconStyle} />}</Td>
               <Td>{row.visitors.toLocaleString()}</Td>

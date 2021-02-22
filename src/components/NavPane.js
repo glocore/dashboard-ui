@@ -15,10 +15,11 @@ import { NavChild, NavItem } from "./navPane/NavItem";
 import { Spacer } from "./common/Spacer";
 import { Recents } from "./navPane/Recents";
 
+const navPaneWidth = 240;
+
 const Root = styled.nav`
   border-right: ${({ theme }) => theme.surface.border};
-  height: 100vh;
-  overflow-y: auto;
+  width: ${navPaneWidth}px;
 `;
 
 const TopIconWrapper = styled.div`
@@ -139,4 +140,4 @@ const NavPane = () => {
   );
 };
 
-export { NavPane };
+export { NavPane, navPaneWidth };

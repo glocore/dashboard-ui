@@ -70,8 +70,8 @@ const SocialTrafficTable = () => {
           </Tr>
         </thead>
         <tbody>
-          {tableData.map((row) => (
-            <Tr>
+          {tableData.map((row, index) => (
+            <Tr key={index}>
               <Td>{row.network}</Td>
               <Td>{row.visitors.toLocaleString()}</Td>
               <Td>
