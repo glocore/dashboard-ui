@@ -12,7 +12,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import styled from "styled-components";
-import { Card, CardContent, HeaderText } from "../common/Card";
+import { Card, CardContent, CardHeader, CardHeaderText } from "../common/Card";
 import { Dropdown } from "../common/Dropdown";
 import { Spacer } from "../common/Spacer";
 import { customTooltip } from "./dailyVisitorChart/Tooltip";
@@ -108,6 +108,9 @@ const DailyVisitorsChart = () => {
 
   return (
     <Paper>
+      <CardHeader>
+        <CardHeaderText>Daily Visitors</CardHeaderText>
+      </CardHeader>
       <CardContent>
         <ChartWrapper>
           <ResponsiveContainer>

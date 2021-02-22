@@ -8,14 +8,14 @@ const Root = styled.div`
   width: 100%;
 `;
 
-const HeaderWrapper = styled.div`
+const CardHeader = styled.div`
   ${({ theme }) => `
     padding: ${theme.padding(2)}px ${theme.padding(4)}px;
     border-bottom: ${theme.surface.border};
   `}
 `;
 
-const HeaderText = styled.span`
+const CardHeaderText = styled.span`
   display: block;
   font-size: 1.2rem;
   font-weight: 500;
@@ -30,13 +30,13 @@ const Card = ({ children, Header }) => {
   return (
     <Root>
       {Header ? (
-        <HeaderWrapper>
+        <CardHeader>
           <Header />
-        </HeaderWrapper>
+        </CardHeader>
       ) : null}
       {children}
     </Root>
   );
 };
 
-export { Card, CardContent, HeaderText };
+export { Card, CardHeader, CardContent, CardHeaderText };

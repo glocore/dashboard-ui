@@ -1,47 +1,22 @@
 // TODO: Make table rows scollable
-import { TableCell } from "@material-ui/core";
+import {
+  TableCell as MuiTableCell,
+  TableRow as MuiTableRow,
+} from "@material-ui/core";
 import styled from "styled-components";
 
-const StyledTable = styled.table`
-  width: 100%;
-  border-collapse: collapse;
-`;
-
-const TableWrapper = styled.div`
-  width: 100%;
-  max-height: 400px;
-  overflow: auto;
-`;
-
-const Table = ({ children, ...props }) => (
-  <TableWrapper>
-    <StyledTable {...props} cellPadding={0} cellSpacing={0}>
-      {children}
-    </StyledTable>
-  </TableWrapper>
-);
-
-const Tr = styled.tr`
-  border-bottom: ${({ theme }) => theme.surface.border};
-
+const TableRow = styled(MuiTableRow)`
   tbody & {
     cursor: pointer;
-    transition: background-color 0.1s;
-  }
-
-  tbody &:hover {
-    background-color: #eeeeee;
-  }
-
-  tbody &:active {
-    background-color: #dddddd;
   }
 `;
 
-const Td = styled.td`
-  text-align: left;
-  padding: ${({ theme }) => `${theme.padding(3)}px ${theme.padding(2)}px`};
-
+const TableHeadCell = styled(MuiTableCell)`
+  text-transform: uppercase;
+  background-color: white;
+  color: #999;
+  font-size: 0.75rem;
+  font-weight: 500;
   &:first-child {
     padding-left: ${({ theme }) => theme.padding(4)}px;
   }
@@ -50,14 +25,7 @@ const Td = styled.td`
   }
 `;
 
-const Th = styled.th`
-  text-align: left;
-  text-transform: uppercase;
-  color: #999;
-  font-size: 0.75rem;
-  font-weight: 500;
-  padding: ${({ theme }) => `${theme.padding(2)}px ${theme.padding(2)}px`};
-
+const TableCell = styled(MuiTableCell)`
   &:first-child {
     padding-left: ${({ theme }) => theme.padding(4)}px;
   }
@@ -66,12 +34,4 @@ const Th = styled.th`
   }
 `;
 
-const TableHeadCell = styled(TableCell)`
-  text-transform: uppercase;
-  background-color: transparent;
-  color: #999;
-  font-size: 0.75rem;
-  font-weight: 500;
-`;
-
-export { Table, Tr, Td, Th, TableHeadCell };
+export { TableRow, TableHeadCell, TableCell };
