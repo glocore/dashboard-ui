@@ -9,6 +9,7 @@ const theme = {
   },
   clickable: `
     cursor: pointer;
+    transition: background-color 0.1s;
     &:hover {
       background-color: #eeeeee;
     }

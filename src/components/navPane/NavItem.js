@@ -22,11 +22,13 @@ const NavLabel = styled.div`
   display: flex;
   align-items: center;
   font-weight: 500;
+  font-size: 0.85rem;
 `;
 
 const NavChildWrapper = styled.div`
   display: flex;
   align-items: center;
+  font-size: 0.85rem;
   ${({ theme, active }) => `
     color: ${active ? "#1565D8" : "#999999"};
     font-weight: ${active ? 600 : 500};
@@ -56,7 +58,7 @@ const arrowIconStyles = {
 const NavItem = ({ Icon, onClick, label, active, open, children }) => {
   return (
     <NavItemRoot open={open}>
-      <NavItemWrapper onClick={onClick}>
+      <NavItemWrapper onClick={onClick} open={open}>
         <NavLabel>
           <Icon style={getLabelIconStyles(active)} />
           {label}

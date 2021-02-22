@@ -25,6 +25,7 @@ const Tr = styled.tr`
 
   tbody & {
     cursor: pointer;
+    transition: background-color 0.1s;
   }
 
   tbody &:hover {
