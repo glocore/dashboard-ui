@@ -90,7 +90,7 @@ const OnlineIndicator = styled.div`
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: green;
+  background-color: #32a941;
   margin-left: ${({ theme }) => theme.padding(1)}px;
 `;
 

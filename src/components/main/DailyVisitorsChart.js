@@ -12,7 +12,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import styled from "styled-components";
-import { Card, CardContent, CardHeader, CardHeaderText } from "../common/Card";
+import { CardContent, CardHeader, CardHeaderText } from "../common/Card";
 import { Dropdown } from "../common/Dropdown";
 import { Spacer } from "../common/Spacer";
 import { customTooltip } from "./dailyVisitorChart/Tooltip";
@@ -93,23 +93,47 @@ const XAxisTick = ({ x, y, payload }) => {
 
 const DailyVisitorsChart = () => {
   const [data, setData] = React.useState(generateSampleData());
-  const [currentMonth, setCurrentMonth] = React.useState("january");
-  const [currentYear, setCurrentYear] = React.useState("2018");
+  const [currentMonth, setCurrentMonth] = React.useState({
+    label: "January",
+    value: "january",
+  });
+  const [currentYear, setCurrentYear] = React.useState({
+    label: "2018",
+    value: "2018",
+  });
 
-  const onMonthChange = (e) => {
-    setCurrentMonth(e.target.value);
+  const onMonthChange = (month) => {
+    setCurrentMonth(month);
     setData(generateSampleData());
   };
 
-  const onYearChange = (e) => {
-    setCurrentYear(e.target.value);
+  const onYearChange = (year) => {
+    setCurrentYear(year);
     setData(generateSampleData());
   };
 
   return (
     <Paper>
       <CardHeader>
-        <CardHeaderText>Daily Visitors</CardHeaderText>
+        <HeaderWrapper>
+          <CardHeaderText>Daily Visitors</CardHeaderText>
+          <HeaderControlsWrapper>
+            <Dropdown
+              options={months.map((month) => ({
+                label: month.charAt(0).toUpperCase() + month.slice(1),
+                value: month,
+              }))}
+              current={currentMonth}
+              onChange={onMonthChange}
+            />
+            <Spacer h={2} />
+            <Dropdown
+              options={years.map((year) => ({ label: year, value: year }))}
+              current={currentYear}
+              onChange={onYearChange}
+            />
+          </HeaderControlsWrapper>
+        </HeaderWrapper>
       </CardHeader>
       <CardContent>
         <ChartWrapper>
@@ -136,7 +160,7 @@ const DailyVisitorsChart = () => {
                 ticks={[3000, 6000, 9000]}
               />
               <Tooltip
-                content={customTooltip(currentMonth, currentYear)}
+                content={customTooltip(currentMonth.value, currentYear.value)}
                 cursor={{ fill: "#EEEEEE" }}
               />
               <Bar dataKey="visitors" fill="#1565D8" barSize={12} />

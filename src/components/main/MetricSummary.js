@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { AreaChart, Area, ResponsiveContainer } from "recharts";
-import { Card, CardContent } from "../common/Card";
+import { CardContent } from "../common/Card";
 import {
   MetricDown as MetricDownIcon,
   MetricUp as MetricUpIcon,

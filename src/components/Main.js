@@ -35,13 +35,6 @@ const Root = styled.main`
   }
 `;
 
-const MainWrapper = styled.div`
-  padding: ${({ theme }) => theme.padding(4)}px;
-  width: 100%;
-  max-width: 1280px;
-  margin: 0 auto;
-`;
-
 const DailyVisitorChartWrapper = styled.div`
   padding: 32px 0 16px;
 `;

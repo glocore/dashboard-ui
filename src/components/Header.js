@@ -13,6 +13,8 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: navPaneWidth,
     },
     borderBottom: "1px solid #e9ecf3",
+    backgroundColor: "white",
+    color: "rgba(0, 0, 0, 0.87)",
   },
 }));
 
@@ -48,19 +50,17 @@ const Title = styled.span`
 
 const Header = ({ onDrawerToggleClick }) => {
   const classes = useStyles();
-  const [currentLanguage, setCurrentLanguage] = React.useState("en");
+  const [currentLanguage, setCurrentLanguage] = React.useState({
+    label: "🇬🇧 EN",
+    value: "en",
+  });
 
-  const onLanguageChange = (e) => {
-    setCurrentLanguage(e.target.value);
+  const onLanguageChange = (value) => {
+    setCurrentLanguage(value);
   };
 
   return (
-    <AppBar
-      position="fixed"
-      color="white"
-      elevation={0}
-      className={classes.appBar}
-    >
+    <AppBar position="fixed" elevation={0} className={classes.appBar}>
       <HeaderContent>
         <HeaderLeftWrapper>
           <DrawerToggle onClick={onDrawerToggleClick}>
