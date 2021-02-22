@@ -1,4 +1,6 @@
+// Add header to cards
 // TODO: extract sample data source to separate file; add timeout to emulate remote request
+import { Paper } from "@material-ui/core";
 import React from "react";
 import {
   BarChart,
@@ -105,29 +107,7 @@ const DailyVisitorsChart = () => {
   };
 
   return (
-    <Card
-      Header={() => (
-        <HeaderWrapper>
-          <HeaderText>Daily Visitors</HeaderText>
-          <HeaderControlsWrapper>
-            <Dropdown
-              options={months.map((month) => ({
-                label: month.charAt(0).toUpperCase() + month.slice(1),
-                value: month,
-              }))}
-              current={currentMonth}
-              onChange={onMonthChange}
-            />
-            <Spacer h={2} />
-            <Dropdown
-              options={years.map((year) => ({ label: year, value: year }))}
-              current={currentYear}
-              onChange={onYearChange}
-            />
-          </HeaderControlsWrapper>
-        </HeaderWrapper>
-      )}
-    >
+    <Paper>
       <CardContent>
         <ChartWrapper>
           <ResponsiveContainer>
@@ -161,7 +141,7 @@ const DailyVisitorsChart = () => {
           </ResponsiveContainer>
         </ChartWrapper>
       </CardContent>
-    </Card>
+    </Paper>
   );
 };
 

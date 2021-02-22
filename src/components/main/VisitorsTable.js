@@ -1,5 +1,6 @@
 import {
-  // Table,
+  Paper,
+  Table,
   TableBody,
   TableCell,
   TableContainer,
@@ -9,8 +10,7 @@ import {
 import React from "react";
 import { Area, AreaChart, ResponsiveContainer } from "recharts";
 import { ExternalLink as ExternalLinkIcon } from "../../icons";
-import { Card, HeaderText } from "../common/Card";
-import { Table, Td, Th, Tr } from "../common/Table";
+import { TableHeadCell } from "../common/Table";
 
 const columns = [
   { label: "Page Name" },
@@ -69,15 +69,18 @@ const externalLinkIconStyle = {
 const VisitorsTable = () => {
   const [tableData] = React.useState(generateSampleData());
   return (
-    <Card Header={() => <HeaderText>Most Visited Pages</HeaderText>}>
-      {/* <TableContainer style={{ maxHeight: 400, width: "100%" }}>
+    <Paper>
+      <TableContainer style={{ maxHeight: 400, width: "100%" }}>
         <Table stickyHeader>
           <TableHead>
             <TableRow>
               {columns.map((column, index) => (
-                <TableCell key={index} style={{ minWidth: column.minWidth }}>
+                <TableHeadCell
+                  key={index}
+                  style={{ minWidth: column.minWidth }}
+                >
                   {column.label}
-                </TableCell>
+                </TableHeadCell>
               ))}
             </TableRow>
           </TableHead>
@@ -112,48 +115,8 @@ const VisitorsTable = () => {
             ))}
           </TableBody>
         </Table>
-      </TableContainer> */}
-      <Table>
-        <thead>
-          <Tr>
-            <Th>Page Name</Th>
-            <Th>{""}</Th>
-            <Th>Visitors</Th>
-            <Th>Unique Page Visits</Th>
-            <Th style={{ paddingRight: 0 }}>Bounce Rate</Th>
-            <Th style={{ minWidth: 80, paddingLeft: 0 }}>{""}</Th>
-          </Tr>
-        </thead>
-        <tbody>
-          {tableData.map((row, index) => (
-            <Tr key={index}>
-              <Td>{row.route}</Td>
-              <Td>{<ExternalLinkIcon style={externalLinkIconStyle} />}</Td>
-              <Td>{row.visitors.toLocaleString()}</Td>
-              <Td>{row.uniquePageVisits.toLocaleString()}</Td>
-              <Td style={{ paddingRight: 0 }}>{row.bounceRate}%</Td>
-              <Td style={{ paddingLeft: 0 }}>
-                {
-                  <div style={{ width: "100%", height: 50 }}>
-                    <ResponsiveContainer>
-                      <AreaChart data={row.chartData} margin={false}>
-                        <Area
-                          type="linear"
-                          dataKey="data"
-                          stroke="#1565D8"
-                          strokeWidth={3}
-                          fill="#E7EFFA"
-                        />
-                      </AreaChart>
-                    </ResponsiveContainer>
-                  </div>
-                }
-              </Td>
-            </Tr>
-          ))}
-        </tbody>
-      </Table>
-    </Card>
+      </TableContainer>
+    </Paper>
   );
 };
 

@@ -4,7 +4,6 @@
 import { Container, Grid } from "@material-ui/core";
 import React from "react";
 import styled from "styled-components";
-import { Spacer } from "./common/Spacer";
 import { DailyVisitorsChart } from "./main/DailyVisitorsChart";
 import { MetricSummary } from "./main/MetricSummary";
 import { SocialTrafficTable } from "./main/SocialTrafficTable";
@@ -43,20 +42,16 @@ const MainWrapper = styled.div`
   margin: 0 auto;
 `;
 
-const MetricSummaryGrid = styled.div`
-  display: grid;
-  width: 100%;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-gap: ${({ theme }) => theme.padding(4)}px;
+const DailyVisitorChartWrapper = styled.div`
+  padding: 32px 0 16px;
 `;
 
-const TablesGrid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: ${({ theme }) => theme.padding(4)}px;
-  @media (min-width: 1280px) {
-    grid-template-columns: 2fr 1fr;
-  }
+const MetricSummaryGrid = styled(Grid)`
+  padding: 16px 0;
+`;
+
+const TablesGrid = styled(Grid)`
+  padding: 16px 0;
 `;
 
 const Main = () => {
@@ -68,7 +63,10 @@ const Main = () => {
   return (
     <Root>
       <Container maxWidth="lg">
-        <Grid container spacing={4} style={{ padding: "32px 0" }}>
+        <DailyVisitorChartWrapper>
+          <DailyVisitorsChart />
+        </DailyVisitorChartWrapper>
+        <MetricSummaryGrid container spacing={4}>
           <Grid item xs={12} md={6} lg={3}>
             <MetricSummary
               title="Realtime Users"
@@ -105,7 +103,15 @@ const Main = () => {
               chartColors={{ stroke: "#F9CF56", fill: "#FEFAEE" }}
             />
           </Grid>
-        </Grid>
+        </MetricSummaryGrid>
+        <TablesGrid container spacing={4}>
+          <Grid item xs={12} lg={8}>
+            <VisitorsTable />
+          </Grid>
+          <Grid item xs={12} lg={4}>
+            <SocialTrafficTable />
+          </Grid>
+        </TablesGrid>
       </Container>
     </Root>
   );

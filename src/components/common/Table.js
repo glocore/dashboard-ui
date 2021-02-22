@@ -1,4 +1,5 @@
 // TODO: Make table rows scollable
+import { TableCell } from "@material-ui/core";
 import styled from "styled-components";
 
 const StyledTable = styled.table`
@@ -65,4 +66,12 @@ const Th = styled.th`
   }
 `;
 
-export { Table, Tr, Td, Th };
+const TableHeadCell = styled(TableCell)`
+  text-transform: uppercase;
+  background-color: transparent;
+  color: #999;
+  font-size: 0.75rem;
+  font-weight: 500;
+`;
+
+export { Table, Tr, Td, Th, TableHeadCell };

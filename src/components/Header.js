@@ -1,3 +1,4 @@
+// Fix width if header content for large screens
 import { AppBar, makeStyles } from "@material-ui/core";
 import React from "react";
 import styled from "styled-components";
