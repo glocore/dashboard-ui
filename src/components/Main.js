@@ -1,4 +1,5 @@
 // TODO: Make header fixed while scrolling
+// TODO: Add proptypes everywhere
 import React from "react";
 import styled from "styled-components";
 import { Spacer } from "./common/Spacer";

@@ -1,6 +1,19 @@
+import React from "react";
 import styled from "styled-components";
-import { Home as HomeIcon, Settings as SettingsIcon } from "../icons";
+import Collapse from "@material-ui/core/Collapse";
+import {
+  Beaker as BeakerIcon,
+  Briefcase as BriefcaseIcon,
+  Calendar as CalendarIcon,
+  Dashboard as DashboardIcon,
+  Home as HomeIcon,
+  Inbox as InboxIcon,
+  Settings as SettingsIcon,
+} from "../icons";
 import profileImage from "../profile.jpg";
+import { NavChild, NavItem } from "./navPane/NavItem";
+import { Spacer } from "./common/Spacer";
+import { Recents } from "./navPane/Recents";
 
 const Root = styled.nav`
   border-right: ${({ theme }) => theme.surface.border};
@@ -24,6 +37,11 @@ const TopIcon = () => (
   </TopIconWrapper>
 );
 
+const ProfileRoot = styled.div`
+  padding: ${({ theme }) => theme.padding(4)}px 0;
+  border-bottom: ${({ theme }) => theme.surface.border};
+`;
+
 const ProfileImage = styled.div`
   position: relative;
   width: 120px;
@@ -32,7 +50,7 @@ const ProfileImage = styled.div`
   background-position: center;
   background-size: cover;
   background-image: url(${profileImage});
-  margin: ${({ theme }) => theme.padding(4)}px auto;
+  margin: 0 auto;
 `;
 
 const SettingsButton = styled.button`
@@ -76,20 +94,47 @@ const OnlineIndicator = styled.div`
 `;
 
 const NavPane = () => {
+  const [dashboardOpen, setDashboardOpen] = React.useState(true);
+
+  const toggleDashboardOpen = () => {
+    setDashboardOpen(!dashboardOpen);
+  };
+
   return (
     <Root>
       <TopIcon />
-      <ProfileImage>
-        <SettingsButton>
-          <SettingsIcon width={24} height={24} />
-        </SettingsButton>
-      </ProfileImage>
+      <ProfileRoot>
+        <ProfileImage>
+          <SettingsButton>
+            <SettingsIcon width={24} height={24} />
+          </SettingsButton>
+        </ProfileImage>
+        <Spacer v={4} />
+        <ProfileName>
+          Martha Blair
+          <OnlineIndicator />
+        </ProfileName>
+        <ProfileTitle>Developer</ProfileTitle>
+      </ProfileRoot>
+      <NavItem
+        onClick={toggleDashboardOpen}
+        Icon={DashboardIcon}
+        active={true}
+        open={dashboardOpen}
+        label="Dashboard"
+      >
+        <Collapse in={dashboardOpen}>
+          <NavChild active={true} label="Page Visitors" />
+          <NavChild label="Post Performance" />
+          <NavChild label="Team Overall" />
+        </Collapse>
+      </NavItem>
+      <NavItem Icon={CalendarIcon} label="Calendar"></NavItem>
+      <NavItem Icon={InboxIcon} label="Inbox"></NavItem>
+      <NavItem Icon={BriefcaseIcon} label="Invoicing"></NavItem>
+      <NavItem Icon={BeakerIcon} label="Lab / Experimental"></NavItem>
 
-      <ProfileName>
-        Martha Blair
-        <OnlineIndicator />
-      </ProfileName>
-      <ProfileTitle>Developer</ProfileTitle>
+      <Recents />
     </Root>
   );
 };
