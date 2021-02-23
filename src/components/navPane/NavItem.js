@@ -1,10 +1,12 @@
+import { Collapse } from "@material-ui/core";
+import React from "react";
 import styled from "styled-components";
 import { DropDown as DropDownIcon, DropUp as DropUpIcon } from "../../icons";
 
 const NavItemRoot = styled.div`
-  ${({ theme, open }) => `
+  ${({ theme, open, collapsible }) => `
     border-bottom: ${theme.surface.border};
-    padding-bottom: ${open ? theme.padding(1.5) : 0}px;
+    padding-bottom: ${collapsible && open ? theme.padding(1.5) : 0}px;
     `}
 `;
 
@@ -55,10 +57,16 @@ const arrowIconStyles = {
   width: 20,
 };
 
-const NavItem = ({ Icon, onClick, label, active, open, children }) => {
+const NavItem = ({ Icon, label, active, children }) => {
+  const [open, setOpen] = React.useState(active);
+
+  const toggleOpen = () => {
+    setOpen(!open);
+  };
+
   return (
-    <NavItemRoot open={open}>
-      <NavItemWrapper onClick={onClick} open={open}>
+    <NavItemRoot open={open} collapsible={!!children}>
+      <NavItemWrapper onClick={toggleOpen} open={open}>
         <NavLabel>
           <Icon style={getLabelIconStyles(active)} />
           {label}
@@ -71,7 +79,7 @@ const NavItem = ({ Icon, onClick, label, active, open, children }) => {
           )
         ) : null}
       </NavItemWrapper>
-      {children}
+      {children ? <Collapse in={open}>{children}</Collapse> : null}
     </NavItemRoot>
   );
 };

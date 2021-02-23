@@ -1,4 +1,3 @@
-// TODO: Make table rows scollable
 import {
   TableCell as MuiTableCell,
   TableRow as MuiTableRow,

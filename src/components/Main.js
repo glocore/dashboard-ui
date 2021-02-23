@@ -1,7 +1,4 @@
-// TODO: Make layout responsive
-// TODO: Make header fixed while scrolling
 // TODO: Add proptypes everywhere
-// TODO: Change Card dropshadows
 // TODO: add aria labels
 // TODO: Delete unused component files
 // TODO: Make navpane header fixed
@@ -13,7 +10,6 @@ import { DailyVisitorsChart } from "./main/DailyVisitorsChart";
 import { MetricSummary } from "./main/MetricSummary";
 import { SocialTrafficTable } from "./main/SocialTrafficTable";
 import { VisitorsTable } from "./main/VisitorsTable";
-import { navPaneWidth } from "./NavPane";
 
 const getRandomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -34,22 +30,28 @@ const generateSampleChartData = () => {
 const Root = styled.main`
   background-color: #fbfbfd;
   width: 100%;
-  padding-top: 70px;
-  @media (min-width: 1280px) {
-    padding-left: ${navPaneWidth}px;
-  }
+  ${({ theme }) => `
+    padding-top: ${theme.ui.headerHeight};
+    ${theme.breakpoints.up("lg")} {
+      padding-left: ${theme.ui.navPaneWidth};
+    }  
+  `}
 `;
 
 const DailyVisitorChartWrapper = styled.div`
-  padding: 32px 0 16px;
+  ${({ theme }) => `
+    padding-top: ${theme.padding(4)}px;
+    padding-bottom: ${theme.padding(3)}px;
+  `}
 `;
 
 const MetricSummaryGrid = styled(Grid)`
-  padding: 16px 0;
+  padding: ${({ theme }) => theme.padding(1)}px 0;
 `;
 
 const TablesGrid = styled(Grid)`
-  padding: 16px 0;
+  padding: ${({ theme }) => theme.padding(1)}px 0;
+  padding-bottom: ${({ theme }) => theme.padding(2)}px;
 `;
 
 const Main = () => {

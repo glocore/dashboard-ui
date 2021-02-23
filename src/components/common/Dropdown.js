@@ -1,4 +1,3 @@
-// TODO: Custom dropdown options list
 // TODO: Add theme color
 import React from "react";
 import styled, { keyframes, css } from "styled-components";
@@ -45,13 +44,13 @@ const Button = styled.button`
   align-items: center;
   height: 40px;
   width: 100%;
+  cursor: pointer;
   background-color: transparent;
   outline-offset: 5px;
   border-radius: 5px;
-  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
-    rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+
   ${({ theme }) => `
-    border: ${theme.border};
+    ${theme.elevation(1)}
     padding: ${theme.padding(1)}px ${theme.padding(2)}px   
   `}
 `;
@@ -69,17 +68,16 @@ const OptionsWrapper = styled.div`
   z-index: 1;
   transform-origin: top right;
   min-width: 200px;
-  background-color: white;
-  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
-    rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
-  border: 1px solid #eeeeee;
   border-radius: 5px;
   animation-name: ${animation};
   animation-duration: 0.1s;
   animation-fill-mode: forwards;
   max-height: 300px;
   overflow-y: auto;
+  font-size: 0.85rem;
   ${({ theme }) => `
+    ${theme.elevation(2)}
+    background-color: ${theme.surface.backgroundColor};
     margin-top: ${theme.padding(1)}px;
   `};
 `;

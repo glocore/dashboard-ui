@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import Collapse from "@material-ui/core/Collapse";
 import {
   Beaker as BeakerIcon,
   Briefcase as BriefcaseIcon,
@@ -15,11 +14,11 @@ import { NavChild, NavItem } from "./navPane/NavItem";
 import { Spacer } from "./common/Spacer";
 import { Recents } from "./navPane/Recents";
 
-const navPaneWidth = 240;
-
 const Root = styled.nav`
-  border-right: ${({ theme }) => theme.surface.border};
-  width: ${navPaneWidth}px;
+  ${({ theme }) => `
+    border-right: ${theme.surface.border};
+    width: ${theme.ui.navPaneWidth};  
+  `}
 `;
 
 const TopIconWrapper = styled.div`
@@ -59,8 +58,8 @@ const SettingsButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  right: 0;
-  bottom: 0;
+  right: -5px;
+  bottom: -5px;
   background-color: white;
   border: none;
   border-radius: 50%;
@@ -74,6 +73,8 @@ const ProfileName = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
+  color: ${({ theme }) => theme.fontColor.dark};
+  font-weight: 500;
 `;
 
 const ProfileTitle = styled.span`
@@ -81,7 +82,7 @@ const ProfileTitle = styled.span`
   align-items: center;
   justify-content: center;
   font-size: 0.85rem;
-  color: #888888;
+  color: ${({ theme }) => theme.fontColor.light};
   margin-top: ${({ theme }) => theme.padding(1)}px;
 `;
 
@@ -95,12 +96,6 @@ const OnlineIndicator = styled.div`
 `;
 
 const NavPane = () => {
-  const [dashboardOpen, setDashboardOpen] = React.useState(true);
-
-  const toggleDashboardOpen = () => {
-    setDashboardOpen(!dashboardOpen);
-  };
-
   return (
     <Root>
       <TopIcon />
@@ -117,18 +112,10 @@ const NavPane = () => {
         </ProfileName>
         <ProfileTitle>Developer</ProfileTitle>
       </ProfileRoot>
-      <NavItem
-        onClick={toggleDashboardOpen}
-        Icon={DashboardIcon}
-        active={true}
-        open={dashboardOpen}
-        label="Dashboard"
-      >
-        <Collapse in={dashboardOpen}>
-          <NavChild active={true} label="Page Visitors" />
-          <NavChild label="Post Performance" />
-          <NavChild label="Team Overall" />
-        </Collapse>
+      <NavItem Icon={DashboardIcon} active={true} label="Dashboard">
+        <NavChild active={true} label="Page Visitors" />
+        <NavChild label="Post Performance" />
+        <NavChild label="Team Overall" />
       </NavItem>
       <NavItem Icon={CalendarIcon} label="Calendar"></NavItem>
       <NavItem Icon={InboxIcon} label="Inbox"></NavItem>
@@ -140,4 +127,4 @@ const NavPane = () => {
   );
 };
 
-export { NavPane, navPaneWidth };
+export { NavPane };

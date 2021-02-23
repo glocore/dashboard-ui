@@ -2,9 +2,7 @@ import { Paper } from "@material-ui/core";
 import styled from "styled-components";
 
 const Card = styled(Paper)`
-  border: 1px solid #eeeeee;
-  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
-    rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  ${({ theme }) => theme.elevation(1)}
 `;
 
 const CardHeader = styled.div`

@@ -10,9 +10,9 @@ const Title = styled.span`
   display: block;
   text-transform: uppercase;
   text-align: center;
-  color: #999;
   font-size: 0.75rem;
   font-weight: 500;
+  color: ${({ theme }) => theme.fontColor.light};
 `;
 
 const Metric = styled.span`

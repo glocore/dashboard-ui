@@ -2,11 +2,10 @@ import styled from "styled-components";
 
 const TooltipWrapper = styled.div`
   ${({ theme }) => `
-  background-color: ${theme.surface.backgroundColor};
-  border: ${theme.surface.border};
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
-  padding: ${theme.padding(2)}px;
-`}
+    background-color: ${theme.surface.backgroundColor};
+    ${theme.elevation(2)}
+    padding: ${theme.padding(2)}px;
+  `}
 `;
 
 const TooltipDate = styled.span`

@@ -1,5 +1,6 @@
 import { Table, TableBody, TableContainer, TableHead } from "@material-ui/core";
 import React from "react";
+import styled from "styled-components";
 import { Area, AreaChart, ResponsiveContainer } from "recharts";
 import { ExternalLink as ExternalLinkIcon } from "../../icons";
 import { Card, CardHeader, CardHeaderText } from "../common/Card";
@@ -52,12 +53,12 @@ const generateSampleData = () => {
   return result;
 };
 
-const externalLinkIconStyle = {
-  width: 20,
-  height: 20,
-  color: "#999999",
-  marginTop: 3,
-};
+const StyledExternalLinkIcon = styled(ExternalLinkIcon)`
+  width: 20px;
+  height: 20px;
+  color: ${({ theme }) => theme.fontColor.light};
+  margin-top: 6px;
+`;
 
 const VisitorsTable = () => {
   const [tableData] = React.useState(generateSampleData());
@@ -85,7 +86,7 @@ const VisitorsTable = () => {
               <TableRow hover key={index}>
                 <TableCell>{row.route}</TableCell>
                 <TableCell>
-                  {<ExternalLinkIcon style={externalLinkIconStyle} />}
+                  <StyledExternalLinkIcon />
                 </TableCell>
                 <TableCell>{row.visitors.toLocaleString()}</TableCell>
                 <TableCell>{row.uniquePageVisits.toLocaleString()}</TableCell>

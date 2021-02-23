@@ -1,22 +1,20 @@
-// Fix width if header content for large screens
-import { AppBar, Container, makeStyles } from "@material-ui/core";
+import { AppBar, Container } from "@material-ui/core";
 import React from "react";
 import styled from "styled-components";
 import { Drawer as DrawerIcon } from "../icons";
 import { Dropdown } from "./common/Dropdown";
-import { navPaneWidth } from "./NavPane";
 
-const useStyles = makeStyles((theme) => ({
-  appBar: {
-    [theme.breakpoints.up("lg")]: {
-      width: `calc(100% - ${navPaneWidth}px)`,
-      marginLeft: navPaneWidth,
-    },
-    borderBottom: "1px solid #e9ecf3",
-    backgroundColor: "white",
-    color: "rgba(0, 0, 0, 0.87)",
-  },
-}));
+const Root = styled(AppBar)`
+  ${({ theme }) => `
+    border-bottom: ${theme.surface.border};
+    background-color: ${theme.surface.backgroundColor};
+    color: ${theme.fontColor.dark};
+    ${theme.breakpoints.up("lg")} {
+      width: calc(100% - ${theme.ui.navPaneWidth});
+      margin-left: ${theme.ui.navPaneWidth};
+    }
+  `}
+`;
 
 const HeaderLeftWrapper = styled.div`
   display: flex;
@@ -26,10 +24,13 @@ const HeaderLeftWrapper = styled.div`
 const DrawerToggle = styled.button`
   background: none;
   border: none;
-  margin-right: ${({ theme }) => theme.padding(2)}px;
-  @media (min-width: 1280px) {
-    display: none;
-  }
+  ${({ theme }) => `
+    margin-right: ${theme.padding(2)}px;
+    ${theme.breakpoints.up("lg")} {
+      display: none;
+    }
+  
+  `}
 `;
 
 const HeaderContent = styled(Container)`
@@ -47,7 +48,6 @@ const Title = styled.span`
 `;
 
 const Header = ({ onDrawerToggleClick }) => {
-  const classes = useStyles();
   const [currentLanguage, setCurrentLanguage] = React.useState({
     label: "🇬🇧 EN",
     value: "en",
@@ -58,7 +58,7 @@ const Header = ({ onDrawerToggleClick }) => {
   };
 
   return (
-    <AppBar position="fixed" elevation={0} className={classes.appBar}>
+    <Root position="fixed" elevation={0}>
       <HeaderContent maxWidth="lg">
         <HeaderLeftWrapper>
           <DrawerToggle onClick={onDrawerToggleClick}>
@@ -75,7 +75,7 @@ const Header = ({ onDrawerToggleClick }) => {
           onChange={onLanguageChange}
         />
       </HeaderContent>
-    </AppBar>
+    </Root>
   );
 };
 

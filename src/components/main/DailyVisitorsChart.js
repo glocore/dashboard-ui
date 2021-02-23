@@ -93,8 +93,8 @@ const XAxisTick = ({ x, y, payload }) => {
 const DailyVisitorsChart = () => {
   const [data, setData] = React.useState(generateSampleData());
   const [currentMonth, setCurrentMonth] = React.useState({
-    label: "January",
-    value: "january",
+    label: "December",
+    value: "december",
   });
   const [currentYear, setCurrentYear] = React.useState({
     label: "2018",
