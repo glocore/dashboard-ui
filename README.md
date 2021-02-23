@@ -1,4 +1,10 @@
-# Getting Started with Create React App
+# dashboard-ui
+
+[Live Demo](https://glocore-dashboard-ui.netlify.app/)
+
+![screenshot](./screenshot.png)
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
