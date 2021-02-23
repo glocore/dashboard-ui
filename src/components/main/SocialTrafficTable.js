@@ -49,7 +49,7 @@ const SocialTrafficTable = () => {
   const { loading, data } = useData();
 
   return (
-    <Card style={{ height: 500 }} loading={loading}>
+    <Card style={{ height: "100%" }} loading={loading}>
       <CardHeader>
         <CardHeaderText>Social Media Traffic</CardHeaderText>
       </CardHeader>

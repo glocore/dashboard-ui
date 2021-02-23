@@ -50,6 +50,7 @@ const contentAppearAnimation = keyframes`
 `;
 
 const CardContent = styled.div`
+  height: 100%;
   padding: ${({ theme, noPadding }) => (noPadding ? 0 : theme.padding(4))}px;
   animation-name: ${contentAppearAnimation};
   animation-fill-mode: backwards;

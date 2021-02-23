@@ -28,12 +28,12 @@ const VisitorsTable = () => {
   const theme = React.useContext(ThemeContext);
 
   return (
-    <Card style={{ height: 500 }} loading={loading}>
+    <Card style={{ height: 470 }} loading={loading}>
       <CardHeader>
         <CardHeaderText>Most Visited Pages</CardHeaderText>
       </CardHeader>
       <CardContent noPadding>
-        <TableContainer style={{ maxHeight: 400, width: "100%" }}>
+        <TableContainer style={{ height: 400, width: "100%" }}>
           <Table stickyHeader>
             <TableHead>
               <TableRow>
