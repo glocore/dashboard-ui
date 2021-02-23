@@ -10,7 +10,6 @@ import { SocialTrafficTable } from "./main/SocialTrafficTable";
 import { VisitorsTable } from "./main/VisitorsTable";
 
 const Root = styled.main`
-  background-color: #fbfbfd;
   width: 100%;
   ${({ theme }) => `
     padding-top: ${theme.ui.headerHeight};
