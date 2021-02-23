@@ -1,5 +1,3 @@
-// Add header to cards
-// TODO: extract sample data source to separate file; add timeout to emulate remote request
 import { LinearProgress } from "@material-ui/core";
 import React from "react";
 import {

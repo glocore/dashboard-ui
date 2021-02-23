@@ -1,6 +1,4 @@
-// TODO: Add proptypes everywhere
 // TODO: add aria labels
-// TODO: Delete unused component files
 // TODO: Make navpane header fixed
 
 import { Container, Grid } from "@material-ui/core";
