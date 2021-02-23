@@ -1,4 +1,5 @@
 import { CircularProgress, Paper } from "@material-ui/core";
+import PropTypes from "prop-types";
 import styled, { keyframes } from "styled-components";
 
 const LoadingWrapper = styled.div`
@@ -55,5 +56,9 @@ const CardContent = styled.div`
   animation-timing-function: ease-in-out;
   animation-duration: 350ms;
 `;
+
+CardContent.propTypes = {
+  noPadding: PropTypes.bool,
+};
 
 export { Card, CardHeader, CardContent, CardHeaderText };

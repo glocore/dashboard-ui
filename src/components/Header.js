@@ -1,5 +1,6 @@
 import { AppBar, Container } from "@material-ui/core";
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Drawer as DrawerIcon } from "../icons";
 import { Dropdown } from "./common/Dropdown";
@@ -78,6 +79,10 @@ const Header = ({ onDrawerToggleClick }) => {
       </HeaderContent>
     </Root>
   );
+};
+
+Header.propTypes = {
+  onDrawerToggleClick: PropTypes.func,
 };
 
 export { Header };

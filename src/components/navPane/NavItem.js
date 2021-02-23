@@ -1,5 +1,6 @@
 import { Collapse } from "@material-ui/core";
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import { DropDown as DropDownIcon, DropUp as DropUpIcon } from "../../icons";
 
@@ -84,11 +85,23 @@ const NavItem = ({ Icon, label, active, children }) => {
   );
 };
 
+NavItem.propTypes = {
+  Icon: PropTypes.elementType.isRequired,
+  label: PropTypes.string.isRequired,
+  active: PropTypes.bool,
+  children: PropTypes.node,
+};
+
 const NavChild = ({ active, label }) => (
   <NavChildWrapper active={active}>
     <IconStub />
     {label}
   </NavChildWrapper>
 );
+
+NavChild.propTypes = {
+  active: PropTypes.bool,
+  label: PropTypes.string.isRequired,
+};
 
 export { NavItem, NavChild };

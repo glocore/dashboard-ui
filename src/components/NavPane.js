@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 import {
   Beaker as BeakerIcon,
   Briefcase as BriefcaseIcon,
@@ -77,5 +78,10 @@ const NavDrawer = ({ open, onClose }) => (
     </Hidden>
   </>
 );
+
+NavDrawer.propTypes = {
+  open: PropTypes.bool.isRequired,
+  onClose: PropTypes.func,
+};
 
 export { NavPane, NavDrawer };
