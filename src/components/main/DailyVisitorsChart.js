@@ -1,5 +1,6 @@
 // Add header to cards
 // TODO: extract sample data source to separate file; add timeout to emulate remote request
+import { LinearProgress } from "@material-ui/core";
 import React from "react";
 import {
   BarChart,
@@ -14,40 +15,8 @@ import styled, { ThemeContext } from "styled-components";
 import { Card, CardContent, CardHeader, CardHeaderText } from "../common/Card";
 import { Dropdown } from "../common/Dropdown";
 import { Spacer } from "../common/Spacer";
+import { useChartData } from "./dailyVisitorChart/data";
 import { customTooltip } from "./dailyVisitorChart/Tooltip";
-
-const getRandomInt = (min, max) => {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-};
-
-const generateSampleData = () => {
-  const result = [];
-  for (let i = 1; i <= 31; i++) {
-    result.push({
-      name: i,
-      visitors: getRandomInt(1000, 8000),
-    });
-  }
-
-  return result;
-};
-
-const months = [
-  "january",
-  "february",
-  "march",
-  "april",
-  "may",
-  "june",
-  "july",
-  "august",
-  "september",
-  "october",
-  "november",
-  "december",
-];
-
-const years = ["2018", "2019", "2020", "2021"];
 
 const AxisTickText = styled.text`
   font-size: 0.7rem;
@@ -92,53 +61,53 @@ const XAxisTick = ({ x, y, payload }) => {
 
 const DailyVisitorsChart = () => {
   const theme = React.useContext(ThemeContext);
-  const [data, setData] = React.useState(generateSampleData());
-  const [currentMonth, setCurrentMonth] = React.useState({
-    label: "December",
-    value: "december",
-  });
-  const [currentYear, setCurrentYear] = React.useState({
-    label: "2018",
-    value: "2018",
-  });
+  const chartData = useChartData();
 
   const onMonthChange = (month) => {
-    setCurrentMonth(month);
-    setData(generateSampleData());
+    chartData.setCurrentMonth(month);
   };
 
   const onYearChange = (year) => {
-    setCurrentYear(year);
-    setData(generateSampleData());
+    chartData.setCurrentYear(year);
   };
 
   return (
-    <Card>
+    <Card
+      style={{ height: 340 }}
+      loading={!chartData.chartData && chartData.loading}
+    >
       <CardHeader>
         <HeaderWrapper>
           <CardHeaderText>Daily Visitors</CardHeaderText>
           <HeaderControlsWrapper>
             <Dropdown
-              options={months.map((month) => ({
+              options={chartData.months.map((month) => ({
                 label: month.charAt(0).toUpperCase() + month.slice(1),
                 value: month,
               }))}
-              current={currentMonth}
+              current={chartData.currentMonth}
               onChange={onMonthChange}
             />
             <Spacer h={2} />
             <Dropdown
-              options={years.map((year) => ({ label: year, value: year }))}
-              current={currentYear}
+              options={chartData.years.map((year) => ({
+                label: year,
+                value: year,
+              }))}
+              current={chartData.currentYear}
               onChange={onYearChange}
             />
           </HeaderControlsWrapper>
         </HeaderWrapper>
       </CardHeader>
+      <LinearProgress style={{ opacity: chartData.loading ? 1 : 0 }} />
       <CardContent>
         <ChartWrapper>
           <ResponsiveContainer>
-            <BarChart data={data} margin={{ left: 0, right: -40 }}>
+            <BarChart
+              data={chartData.chartData}
+              margin={{ left: 0, right: -40 }}
+            >
               <CartesianGrid
                 strokeDasharray="0"
                 stroke="#DDDDDD"
@@ -160,7 +129,10 @@ const DailyVisitorsChart = () => {
                 ticks={[3000, 6000, 9000]}
               />
               <Tooltip
-                content={customTooltip(currentMonth.value, currentYear.value)}
+                content={customTooltip(
+                  chartData.currentMonth.value,
+                  chartData.currentYear.value
+                )}
                 cursor={{ fill: "#EEEEEE" }}
               />
               <Bar

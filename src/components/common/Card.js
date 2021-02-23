@@ -1,9 +1,27 @@
-import { Paper } from "@material-ui/core";
+import { CircularProgress, Paper } from "@material-ui/core";
 import styled from "styled-components";
 
-const Card = styled(Paper)`
+const LoadingWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Loading = () => (
+  <LoadingWrapper>
+    <CircularProgress />
+  </LoadingWrapper>
+);
+
+const CardRoot = styled(Paper)`
   ${({ theme }) => theme.elevation(1)}
 `;
+
+const Card = ({ loading, children, ...props }) => (
+  <CardRoot {...props}>{loading ? <Loading /> : children}</CardRoot>
+);
 
 const CardHeader = styled.div`
   ${({ theme }) => `

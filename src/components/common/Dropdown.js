@@ -1,4 +1,3 @@
-// TODO: Add theme color
 import React from "react";
 import styled, { keyframes, css } from "styled-components";
 import PropTypes from "prop-types";
