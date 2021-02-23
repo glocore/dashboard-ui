@@ -7,13 +7,12 @@ import {
   Dashboard as DashboardIcon,
   Home as HomeIcon,
   Inbox as InboxIcon,
-  Settings as SettingsIcon,
 } from "../icons";
 import profileImage from "../profile.jpg";
 import { NavChild, NavItem } from "./navPane/NavItem";
-import { Spacer } from "./common/Spacer";
 import { Recents } from "./navPane/Recents";
 import { Drawer, Hidden } from "@material-ui/core";
+import { Profile } from "./navPane/Profile";
 
 const Root = styled.nav`
   ${({ theme }) => `
@@ -38,81 +37,11 @@ const TopIcon = () => (
   </TopIconWrapper>
 );
 
-const ProfileRoot = styled.div`
-  padding: ${({ theme }) => theme.padding(4)}px 0;
-  border-bottom: ${({ theme }) => theme.surface.border};
-`;
-
-const ProfileImage = styled.div`
-  position: relative;
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  background-position: center;
-  background-size: cover;
-  background-image: url(${profileImage});
-  margin: 0 auto;
-`;
-
-const SettingsButton = styled.button`
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  right: -5px;
-  bottom: -5px;
-  background-color: white;
-  border: none;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  color: #a09fa4;
-  ${({ theme }) => theme.clickable}
-`;
-
-const ProfileName = styled.span`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: ${({ theme }) => theme.fontColor.dark};
-  font-weight: 500;
-`;
-
-const ProfileTitle = styled.span`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.85rem;
-  color: ${({ theme }) => theme.fontColor.light};
-  margin-top: ${({ theme }) => theme.padding(1)}px;
-`;
-
-const OnlineIndicator = styled.div`
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: #32a941;
-  margin-left: ${({ theme }) => theme.padding(1)}px;
-`;
-
 const NavPane = () => {
   return (
     <Root>
       <TopIcon />
-      <ProfileRoot>
-        <ProfileImage>
-          <SettingsButton>
-            <SettingsIcon width={24} height={24} />
-          </SettingsButton>
-        </ProfileImage>
-        <Spacer v={4} />
-        <ProfileName>
-          Martha Blair
-          <OnlineIndicator />
-        </ProfileName>
-        <ProfileTitle>Developer</ProfileTitle>
-      </ProfileRoot>
+      <Profile profileImage={profileImage} />
       <NavItem Icon={DashboardIcon} active={true} label="Dashboard">
         <NavChild active={true} label="Page Visitors" />
         <NavChild label="Post Performance" />
@@ -122,7 +51,6 @@ const NavPane = () => {
       <NavItem Icon={InboxIcon} label="Inbox"></NavItem>
       <NavItem Icon={BriefcaseIcon} label="Invoicing"></NavItem>
       <NavItem Icon={BeakerIcon} label="Lab / Experimental"></NavItem>
-
       <Recents />
     </Root>
   );
