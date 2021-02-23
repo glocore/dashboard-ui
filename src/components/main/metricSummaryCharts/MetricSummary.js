@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { AreaChart, Area, ResponsiveContainer } from "recharts";
-import { Card, CardContent } from "../common/Card";
+import { Card, CardContent } from "../../common/Card";
 import {
   MetricDown as MetricDownIcon,
   MetricUp as MetricUpIcon,
-} from "../../icons";
+} from "../../../icons";
 
 const Title = styled.span`
   display: block;
@@ -40,16 +40,16 @@ const metricChangeIconStyles = {
   marginLeft: 8,
 };
 
-const MetricSummary = ({ title, metric, change, chartData, chartColors }) => {
+const MetricSummary = ({ title, data, chartColors, loading }) => {
   return (
-    <Card>
+    <Card style={{ height: 223 }} loading={loading}>
       <CardContent>
         <Title>{title}</Title>
-        <Metric>{metric}</Metric>
-        <Change value={change}>
-          {change > 0 ? "+" : ""}
-          {change}%
-          {change > 0 ? (
+        <Metric>{data?.metric}</Metric>
+        <Change value={data?.change}>
+          {data?.change > 0 ? "+" : ""}
+          {data?.change}%
+          {data?.change > 0 ? (
             <MetricUpIcon style={metricChangeIconStyles} />
           ) : (
             <MetricDownIcon style={metricChangeIconStyles} />
@@ -57,7 +57,7 @@ const MetricSummary = ({ title, metric, change, chartData, chartColors }) => {
         </Change>
         <div style={{ width: "100%", height: 50 }}>
           <ResponsiveContainer>
-            <AreaChart data={chartData} margin={false}>
+            <AreaChart data={data?.chartData} margin={false}>
               <Area
                 type="linear"
                 dataKey="data"
