@@ -5,6 +5,11 @@ import styled from "styled-components";
 import { Drawer as DrawerIcon } from "../icons";
 import { Dropdown } from "./common/Dropdown";
 
+const languages = [
+  { label: <span>&#127468;&#127463; &nbsp; EN</span>, value: "en" },
+  { label: <span>&#127466;&#127480; &nbsp; ES</span>, value: "es" },
+];
+
 const Root = styled(AppBar)`
   ${({ theme }) => `
     border-bottom: ${theme.surface.border};
@@ -50,10 +55,7 @@ const Title = styled.span`
 `;
 
 const Header = ({ onDrawerToggleClick }) => {
-  const [currentLanguage, setCurrentLanguage] = React.useState({
-    label: "🇬🇧 EN",
-    value: "en",
-  });
+  const [currentLanguage, setCurrentLanguage] = React.useState(languages[0]);
 
   const onLanguageChange = (value) => {
     setCurrentLanguage(value);
@@ -69,10 +71,7 @@ const Header = ({ onDrawerToggleClick }) => {
           <Title>Dashboard</Title>
         </HeaderLeftWrapper>
         <Dropdown
-          options={[
-            { label: "🇬🇧 EN", value: "en" },
-            { label: "🇪🇸 ES", value: "es" },
-          ]}
+          options={languages}
           current={currentLanguage}
           onChange={onLanguageChange}
         />
