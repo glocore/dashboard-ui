@@ -10,6 +10,12 @@ const getBreakpointString = (upOrDown) => (name) => {
 };
 
 const theme = {
+  palette: {
+    primary: {
+      main: "#1565d8",
+      light: "#E7EFFA",
+    },
+  },
   border: "1px solid #e9ecf3",
   borderColor: "#D8DCE7",
   padding: (multiplier = 1) => 8 * multiplier,

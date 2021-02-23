@@ -32,7 +32,7 @@ const NavChildWrapper = styled.div`
   align-items: center;
   font-size: 0.85rem;
   ${({ theme, active }) => `
-    color: ${active ? "#1565D8" : "#999999"};
+    color: ${active ? theme.palette.primary.main : theme.fontColor.light};
     font-weight: ${active ? 600 : 500};
     padding: ${theme.padding(1.5)}px ${theme.padding(3)}px;
     ${theme.clickable}

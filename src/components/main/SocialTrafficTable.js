@@ -46,7 +46,7 @@ const ProgressTrack = styled.div`
 const Progress = styled.div`
   height: 4px;
   width: ${({ percent }) => percent}%;
-  background-color: #1565d8;
+  background-color: ${({ theme }) => theme.palette.primary.main};
   border-radius: 4px;
   animation-name: ${({ percent }) => scaleAnimation(percent)};
   animation-fill-mode: backwards;

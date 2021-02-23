@@ -1,6 +1,6 @@
 import { Table, TableBody, TableContainer, TableHead } from "@material-ui/core";
 import React from "react";
-import styled from "styled-components";
+import styled, { ThemeContext } from "styled-components";
 import { Area, AreaChart, ResponsiveContainer } from "recharts";
 import { ExternalLink as ExternalLinkIcon } from "../../icons";
 import { Card, CardHeader, CardHeaderText } from "../common/Card";
@@ -62,6 +62,8 @@ const StyledExternalLinkIcon = styled(ExternalLinkIcon)`
 
 const VisitorsTable = () => {
   const [tableData] = React.useState(generateSampleData());
+  const theme = React.useContext(ThemeContext);
+
   return (
     <Card style={{ height: "100%", maxHeight: 500 }}>
       <CardHeader>
@@ -99,9 +101,9 @@ const VisitorsTable = () => {
                           <Area
                             type="linear"
                             dataKey="data"
-                            stroke="#1565D8"
+                            stroke={theme.palette.primary.main}
                             strokeWidth={3}
-                            fill="#E7EFFA"
+                            fill={theme.palette.primary.light}
                           />
                         </AreaChart>
                       </ResponsiveContainer>

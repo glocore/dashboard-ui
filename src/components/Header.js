@@ -24,6 +24,7 @@ const HeaderLeftWrapper = styled.div`
 const DrawerToggle = styled.button`
   background: none;
   border: none;
+  margin-top: 4px;
   ${({ theme }) => `
     margin-right: ${theme.padding(2)}px;
     ${theme.breakpoints.up("lg")} {

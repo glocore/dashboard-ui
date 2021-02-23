@@ -10,7 +10,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import styled from "styled-components";
+import styled, { ThemeContext } from "styled-components";
 import { Card, CardContent, CardHeader, CardHeaderText } from "../common/Card";
 import { Dropdown } from "../common/Dropdown";
 import { Spacer } from "../common/Spacer";
@@ -91,6 +91,7 @@ const XAxisTick = ({ x, y, payload }) => {
 };
 
 const DailyVisitorsChart = () => {
+  const theme = React.useContext(ThemeContext);
   const [data, setData] = React.useState(generateSampleData());
   const [currentMonth, setCurrentMonth] = React.useState({
     label: "December",
@@ -162,7 +163,11 @@ const DailyVisitorsChart = () => {
                 content={customTooltip(currentMonth.value, currentYear.value)}
                 cursor={{ fill: "#EEEEEE" }}
               />
-              <Bar dataKey="visitors" fill="#1565D8" barSize={12} />
+              <Bar
+                dataKey="visitors"
+                fill={theme.palette.primary.main}
+                barSize={12}
+              />
             </BarChart>
           </ResponsiveContainer>
         </ChartWrapper>

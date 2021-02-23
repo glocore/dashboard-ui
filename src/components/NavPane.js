@@ -13,6 +13,7 @@ import profileImage from "../profile.jpg";
 import { NavChild, NavItem } from "./navPane/NavItem";
 import { Spacer } from "./common/Spacer";
 import { Recents } from "./navPane/Recents";
+import { Drawer, Hidden } from "@material-ui/core";
 
 const Root = styled.nav`
   ${({ theme }) => `
@@ -127,4 +128,26 @@ const NavPane = () => {
   );
 };
 
-export { NavPane };
+const container = window !== undefined ? () => window.document.body : undefined;
+
+const NavDrawer = ({ open, onClose }) => (
+  <>
+    <Hidden lgUp>
+      <Drawer
+        variant="temporary"
+        container={container}
+        open={open}
+        onClose={onClose}
+      >
+        <NavPane />
+      </Drawer>
+    </Hidden>
+    <Hidden mdDown>
+      <Drawer variant="permanent">
+        <NavPane />
+      </Drawer>
+    </Hidden>
+  </>
+);
+
+export { NavPane, NavDrawer };
