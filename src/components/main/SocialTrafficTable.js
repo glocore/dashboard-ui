@@ -3,6 +3,7 @@ import React from "react";
 import styled, { keyframes } from "styled-components";
 import { Card, CardHeader, CardHeaderText } from "../common/Card";
 import { TableHeadCell, TableCell, TableRow } from "../common/Table";
+import { useData } from "./socialTrafficTable/data";
 
 const getRandomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -63,9 +64,10 @@ const PercentBar = ({ percent }) => {
 };
 
 const SocialTrafficTable = () => {
-  const [tableData] = React.useState(generateSampleData());
+  const { loading, data } = useData();
+
   return (
-    <Card style={{ height: "100%", maxHeight: 500 }}>
+    <Card style={{ height: 500 }} loading={loading}>
       <CardHeader>
         <CardHeaderText>Social Media Traffic</CardHeaderText>
       </CardHeader>
@@ -79,7 +81,7 @@ const SocialTrafficTable = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {tableData.map((row, index) => (
+            {data.map((row, index) => (
               <TableRow key={index} hover>
                 <TableCell>{row.network}</TableCell>
                 <TableCell>{row.visitors.toLocaleString()}</TableCell>

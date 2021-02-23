@@ -5,6 +5,7 @@ import { Area, AreaChart, ResponsiveContainer } from "recharts";
 import { ExternalLink as ExternalLinkIcon } from "../../icons";
 import { Card, CardHeader, CardHeaderText } from "../common/Card";
 import { TableHeadCell, TableCell, TableRow } from "../common/Table";
+import { useData } from "./visitorsTable/data";
 
 const columns = [
   { label: "Page Name" },
@@ -61,11 +62,11 @@ const StyledExternalLinkIcon = styled(ExternalLinkIcon)`
 `;
 
 const VisitorsTable = () => {
-  const [tableData] = React.useState(generateSampleData());
+  const { loading, data } = useData();
   const theme = React.useContext(ThemeContext);
 
   return (
-    <Card style={{ height: "100%", maxHeight: 500 }}>
+    <Card style={{ height: 500 }} loading={loading}>
       <CardHeader>
         <CardHeaderText>Most Visited Pages</CardHeaderText>
       </CardHeader>
@@ -84,7 +85,7 @@ const VisitorsTable = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {tableData.map((row, index) => (
+            {data.map((row, index) => (
               <TableRow hover key={index}>
                 <TableCell>{row.route}</TableCell>
                 <TableCell>
