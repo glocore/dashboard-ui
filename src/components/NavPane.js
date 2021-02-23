@@ -26,7 +26,7 @@ const TopIconWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 70px;
+  height: 72px;
   color: #a09fa4;
   border-bottom: ${({ theme }) => theme.surface.border};
   ${({ theme }) => theme.clickable}

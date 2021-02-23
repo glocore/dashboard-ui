@@ -1,5 +1,5 @@
 // Fix width if header content for large screens
-import { AppBar, makeStyles } from "@material-ui/core";
+import { AppBar, Container, makeStyles } from "@material-ui/core";
 import React from "react";
 import styled from "styled-components";
 import { Drawer as DrawerIcon } from "../icons";
@@ -32,15 +32,13 @@ const DrawerToggle = styled.button`
   }
 `;
 
-const HeaderContent = styled.div`
-  height: 70px;
-  width: calc(100% - ${({ theme }) => theme.padding(8)}px);
+const HeaderContent = styled(Container)`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 ${({ theme }) => theme.padding(4)}px;
-  margin: 0 auto;
-  max-width: 1280px;
+  width: 100%;
+  padding-top: ${({ theme }) => theme.padding(2)}px;
+  padding-bottom: ${({ theme }) => theme.padding(2)}px;
 `;
 
 const Title = styled.span`
@@ -61,7 +59,7 @@ const Header = ({ onDrawerToggleClick }) => {
 
   return (
     <AppBar position="fixed" elevation={0} className={classes.appBar}>
-      <HeaderContent>
+      <HeaderContent maxWidth="lg">
         <HeaderLeftWrapper>
           <DrawerToggle onClick={onDrawerToggleClick}>
             <DrawerIcon width={25} height={25} />

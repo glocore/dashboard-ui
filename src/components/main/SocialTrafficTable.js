@@ -1,13 +1,7 @@
-import {
-  Paper,
-  Table,
-  TableBody,
-  TableContainer,
-  TableHead,
-} from "@material-ui/core";
+import { Table, TableBody, TableContainer, TableHead } from "@material-ui/core";
 import React from "react";
 import styled, { keyframes } from "styled-components";
-import { CardHeader, CardHeaderText } from "../common/Card";
+import { Card, CardHeader, CardHeaderText } from "../common/Card";
 import { TableHeadCell, TableCell, TableRow } from "../common/Table";
 
 const getRandomInt = (min, max) => {
@@ -71,7 +65,7 @@ const PercentBar = ({ percent }) => {
 const SocialTrafficTable = () => {
   const [tableData] = React.useState(generateSampleData());
   return (
-    <Paper style={{ height: "100%", maxHeight: 500 }}>
+    <Card style={{ height: "100%", maxHeight: 500 }}>
       <CardHeader>
         <CardHeaderText>Social Media Traffic</CardHeaderText>
       </CardHeader>
@@ -97,7 +91,7 @@ const SocialTrafficTable = () => {
           </TableBody>
         </Table>
       </TableContainer>
-    </Paper>
+    </Card>
   );
 };
 

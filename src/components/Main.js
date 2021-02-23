@@ -1,6 +1,11 @@
 // TODO: Make layout responsive
 // TODO: Make header fixed while scrolling
 // TODO: Add proptypes everywhere
+// TODO: Change Card dropshadows
+// TODO: add aria labels
+// TODO: Delete unused component files
+// TODO: Make navpane header fixed
+
 import { Container, Grid } from "@material-ui/core";
 import React from "react";
 import styled from "styled-components";
@@ -60,7 +65,7 @@ const Main = () => {
           <DailyVisitorsChart />
         </DailyVisitorChartWrapper>
         <MetricSummaryGrid container spacing={4}>
-          <Grid item xs={12} md={6} lg={3}>
+          <Grid item xs={12} sm={6} md={3}>
             <MetricSummary
               title="Realtime Users"
               metric="56"
@@ -69,7 +74,7 @@ const Main = () => {
               chartColors={{ stroke: "#1565D8", fill: "#E7EFFA" }}
             />
           </Grid>
-          <Grid item xs={12} md={6} lg={3}>
+          <Grid item xs={12} sm={6} md={3}>
             <MetricSummary
               title="Total Visits"
               metric="54,598"
@@ -78,7 +83,7 @@ const Main = () => {
               chartColors={{ stroke: "#33AA44", fill: "#EAF6EC" }}
             />
           </Grid>
-          <Grid item xs={12} md={6} lg={3}>
+          <Grid item xs={12} sm={6} md={3}>
             <MetricSummary
               title="Bounce Rate"
               metric="73.67%"
@@ -87,7 +92,7 @@ const Main = () => {
               chartColors={{ stroke: "#6656F4", fill: "#EFEEFE" }}
             />
           </Grid>
-          <Grid item xs={12} md={6} lg={3}>
+          <Grid item xs={12} sm={6} md={3}>
             <MetricSummary
               title="Visit Duration"
               metric="1m 4s"

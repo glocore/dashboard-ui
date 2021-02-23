@@ -1,14 +1,8 @@
-import {
-  Paper,
-  Table,
-  TableBody,
-  TableContainer,
-  TableHead,
-} from "@material-ui/core";
+import { Table, TableBody, TableContainer, TableHead } from "@material-ui/core";
 import React from "react";
 import { Area, AreaChart, ResponsiveContainer } from "recharts";
 import { ExternalLink as ExternalLinkIcon } from "../../icons";
-import { CardHeader, CardHeaderText } from "../common/Card";
+import { Card, CardHeader, CardHeaderText } from "../common/Card";
 import { TableHeadCell, TableCell, TableRow } from "../common/Table";
 
 const columns = [
@@ -68,7 +62,7 @@ const externalLinkIconStyle = {
 const VisitorsTable = () => {
   const [tableData] = React.useState(generateSampleData());
   return (
-    <Paper style={{ height: "100%", maxHeight: 500 }}>
+    <Card style={{ height: "100%", maxHeight: 500 }}>
       <CardHeader>
         <CardHeaderText>Most Visited Pages</CardHeaderText>
       </CardHeader>
@@ -118,7 +112,7 @@ const VisitorsTable = () => {
           </TableBody>
         </Table>
       </TableContainer>
-    </Paper>
+    </Card>
   );
 };
 

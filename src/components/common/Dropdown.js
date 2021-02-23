@@ -46,7 +46,10 @@ const Button = styled.button`
   height: 40px;
   width: 100%;
   background-color: transparent;
+  outline-offset: 5px;
   border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
   ${({ theme }) => `
     border: ${theme.border};
     padding: ${theme.padding(1)}px ${theme.padding(2)}px   
@@ -67,7 +70,9 @@ const OptionsWrapper = styled.div`
   transform-origin: top right;
   min-width: 200px;
   background-color: white;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+  border: 1px solid #eeeeee;
   border-radius: 5px;
   animation-name: ${animation};
   animation-duration: 0.1s;

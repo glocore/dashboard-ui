@@ -1,11 +1,10 @@
+import { Paper } from "@material-ui/core";
 import styled from "styled-components";
 
-const Root = styled.div`
-  background-color: ${({ theme }) => theme.surface.backgroundColor};
-  border: ${({ theme }) => theme.surface.border};
-  border-radius: 3px;
-  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-  width: 100%;
+const Card = styled(Paper)`
+  border: 1px solid #eeeeee;
+  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 `;
 
 const CardHeader = styled.div`
@@ -25,18 +24,5 @@ const CardHeaderText = styled.span`
 const CardContent = styled.div`
   padding: ${({ theme }) => theme.padding(4)}px;
 `;
-
-const Card = ({ children, Header }) => {
-  return (
-    <Root>
-      {Header ? (
-        <CardHeader>
-          <Header />
-        </CardHeader>
-      ) : null}
-      {children}
-    </Root>
-  );
-};
 
 export { Card, CardHeader, CardContent, CardHeaderText };

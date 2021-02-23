@@ -1,6 +1,5 @@
 // Add header to cards
 // TODO: extract sample data source to separate file; add timeout to emulate remote request
-import { Paper } from "@material-ui/core";
 import React from "react";
 import {
   BarChart,
@@ -12,7 +11,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import styled from "styled-components";
-import { CardContent, CardHeader, CardHeaderText } from "../common/Card";
+import { Card, CardContent, CardHeader, CardHeaderText } from "../common/Card";
 import { Dropdown } from "../common/Dropdown";
 import { Spacer } from "../common/Spacer";
 import { customTooltip } from "./dailyVisitorChart/Tooltip";
@@ -113,7 +112,7 @@ const DailyVisitorsChart = () => {
   };
 
   return (
-    <Paper>
+    <Card>
       <CardHeader>
         <HeaderWrapper>
           <CardHeaderText>Daily Visitors</CardHeaderText>
@@ -168,7 +167,7 @@ const DailyVisitorsChart = () => {
           </ResponsiveContainer>
         </ChartWrapper>
       </CardContent>
-    </Paper>
+    </Card>
   );
 };
 

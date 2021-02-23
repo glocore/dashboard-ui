@@ -1,11 +1,10 @@
 import styled from "styled-components";
 import { AreaChart, Area, ResponsiveContainer } from "recharts";
-import { CardContent } from "../common/Card";
+import { Card, CardContent } from "../common/Card";
 import {
   MetricDown as MetricDownIcon,
   MetricUp as MetricUpIcon,
 } from "../../icons";
-import { Paper } from "@material-ui/core";
 
 const Title = styled.span`
   display: block;
@@ -43,7 +42,7 @@ const metricChangeIconStyles = {
 
 const MetricSummary = ({ title, metric, change, chartData, chartColors }) => {
   return (
-    <Paper elevation={1}>
+    <Card>
       <CardContent>
         <Title>{title}</Title>
         <Metric>{metric}</Metric>
@@ -70,7 +69,7 @@ const MetricSummary = ({ title, metric, change, chartData, chartColors }) => {
           </ResponsiveContainer>
         </div>
       </CardContent>
-    </Paper>
+    </Card>
   );
 };
 
