@@ -7,8 +7,6 @@ import { Container, Grid } from "@material-ui/core";
 import React from "react";
 import styled from "styled-components";
 import { DailyVisitorsChart } from "./main/DailyVisitorsChart";
-// import { useMetricSummaryData } from "./main/data";
-// import { MetricSummary } from "./main/MetricSummary";
 import { MetricSummaryCharts } from "./main/MetricSummaryCharts";
 import { SocialTrafficTable } from "./main/SocialTrafficTable";
 import { VisitorsTable } from "./main/VisitorsTable";
@@ -29,10 +27,6 @@ const DailyVisitorChartWrapper = styled.div`
     padding-top: ${theme.padding(4)}px;
     padding-bottom: ${theme.padding(3)}px;
   `}
-`;
-
-const MetricSummaryGrid = styled(Grid)`
-  padding: ${({ theme }) => theme.padding(1)}px 0;
 `;
 
 const TablesGrid = styled(Grid)`

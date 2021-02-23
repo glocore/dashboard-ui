@@ -1,27 +1,9 @@
 import { Table, TableBody, TableContainer, TableHead } from "@material-ui/core";
 import React from "react";
 import styled, { keyframes } from "styled-components";
-import { Card, CardHeader, CardHeaderText } from "../common/Card";
+import { Card, CardContent, CardHeader, CardHeaderText } from "../common/Card";
 import { TableHeadCell, TableCell, TableRow } from "../common/Table";
 import { useData } from "./socialTrafficTable/data";
-
-const getRandomInt = (min, max) => {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-};
-
-const generateSampleData = () => {
-  const networks = ["Instagram", "Facebook", "Twitter", "LinkedIn"];
-  const result = [];
-  networks.forEach((network) => {
-    result.push({
-      network,
-      visitors: getRandomInt(1000, 5000),
-      percentVisitors: getRandomInt(10, 80),
-    });
-  });
-
-  return result;
-};
 
 const scaleAnimation = (width) => keyframes`
   from {
@@ -71,28 +53,32 @@ const SocialTrafficTable = () => {
       <CardHeader>
         <CardHeaderText>Social Media Traffic</CardHeaderText>
       </CardHeader>
-      <TableContainer style={{ height: "100%", maxHeight: 400, width: "100%" }}>
-        <Table stickyHeader>
-          <TableHead>
-            <TableRow>
-              <TableHeadCell>Network</TableHeadCell>
-              <TableHeadCell>Visitors</TableHeadCell>
-              <TableHeadCell>{""}</TableHeadCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {data.map((row, index) => (
-              <TableRow key={index} hover>
-                <TableCell>{row.network}</TableCell>
-                <TableCell>{row.visitors.toLocaleString()}</TableCell>
-                <TableCell>
-                  <PercentBar percent={row.percentVisitors} />
-                </TableCell>
+      <CardContent noPadding>
+        <TableContainer
+          style={{ height: "100%", maxHeight: 400, width: "100%" }}
+        >
+          <Table stickyHeader>
+            <TableHead>
+              <TableRow>
+                <TableHeadCell>Network</TableHeadCell>
+                <TableHeadCell>Visitors</TableHeadCell>
+                <TableHeadCell>{""}</TableHeadCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+            </TableHead>
+            <TableBody>
+              {data.map((row, index) => (
+                <TableRow key={index} hover>
+                  <TableCell>{row.network}</TableCell>
+                  <TableCell>{row.visitors.toLocaleString()}</TableCell>
+                  <TableCell>
+                    <PercentBar percent={row.percentVisitors} />
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </CardContent>
     </Card>
   );
 };

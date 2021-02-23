@@ -1,5 +1,5 @@
 import { CircularProgress, Paper } from "@material-ui/core";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 const LoadingWrapper = styled.div`
   width: 100%;
@@ -37,8 +37,23 @@ const CardHeaderText = styled.span`
   margin: ${({ theme }) => theme.padding(1)}px 0;
 `;
 
+const contentAppearAnimation = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(30px)
+  }
+  to {
+    opacity: 1
+    transform: translateY(0)
+  }
+`;
+
 const CardContent = styled.div`
-  padding: ${({ theme }) => theme.padding(4)}px;
+  padding: ${({ theme, noPadding }) => (noPadding ? 0 : theme.padding(4))}px;
+  animation-name: ${contentAppearAnimation};
+  animation-fill-mode: backwards;
+  animation-timing-function: ease-in-out;
+  animation-duration: 350ms;
 `;
 
 export { Card, CardHeader, CardContent, CardHeaderText };
